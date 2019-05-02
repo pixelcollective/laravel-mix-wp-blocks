@@ -1,5 +1,5 @@
 {
-  "name": "laravel-mix-wp-block-hmr",
+  "name": "laravel-mix-wp-blocks",
   "version": "0.1.0",
   "description": "Laravel Mix plugin for blocks with HMR and @wordpress externals",
   "main": "index.js",

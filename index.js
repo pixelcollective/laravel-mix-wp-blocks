@@ -26,7 +26,7 @@ class Blocks {
       Dependencies have been installed. Please run again.
     `
 
-    return ['block-editor-hmr', 'classnames', 'prop-types', 'lodash', 'react']
+    return ['@babel/preset-env', 'block-editor-hmr', 'classnames', 'prop-types', 'lodash', 'react']
   }
 
   /**
@@ -48,23 +48,6 @@ class Blocks {
       output: output ? output : './wp-blocks-dist',
       entry: src ? `${src}/blocks.js` : './wp-blocks/blocks.js',
     }
-  }
-
-  /**
-   * Boot
-   */
-  boot() {
-    mkdirp(getDirName(this.config.entry), err => {
-      if (err) console.log(err)
-      fs.copyFile(
-        __dirname + '/scaffolding/blocks.js',
-        this.config.entry,
-        err => {
-          if (err) console.log(err)
-        }
-      )
-    })
-    mix.react(this.config.entry, this.config.output)
   }
 
   /**
@@ -94,6 +77,15 @@ class Blocks {
       '@wordpress/block-editor': 'wp.block-editor',
       '@wordpress/keycodes': 'wp.keycodes',
       '@wordpress/html-entities': 'wp.htmlEntities',
+    }
+  }
+
+  babelConfig() {
+    return {
+      presets: [['@babel/preset-env', {
+        corejs: '2.6.5',
+        useBuiltIns: 'entry',
+      }]],
     }
   }
 }

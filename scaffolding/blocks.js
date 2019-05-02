@@ -15,7 +15,9 @@ autoload(
     after: afterUpdateBlocks,
   },
   (context, loadModules) => {
-    module.hot && module.hot.accept(context.id, loadModules)
+    if (module.hot) {
+      module.hot.accept(context.id, loadModules)
+    }
   }
 )
 
