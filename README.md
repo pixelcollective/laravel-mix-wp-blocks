@@ -1,18 +1,16 @@
 # Laravel Mix WP Blocks
 
-**Current status:** borked by build
-
-I don't have time to figure this out right now. I think it might be easier once k.adam updates his repo with the build-friendly script.
-
-Tried dismantling a bit of it (changing imports, etc. but wasn't getting anywhere.)
-
 ## About
 
 Laravel Mix plugin to facilitate creating WordPress blocks.
 
 Integrates K Adam White's [Hot-Reloading Utilities for WordPress Block Editor](https://github.com/kadamwhite/block-editor-hmr). See further documentation there.
 
+**Current status:**
+
 Early release.
+
+HMR not functioning. The rest of it is *solid*.
 
 ## Install
 
@@ -22,8 +20,13 @@ Early release.
 
 ## Usage
 
+You can see an example in the provided `/demo` repo.
+
 ```js
 require("laravel-mix-wp-blocks")
 
-mix.blocks({ srcDir, destDir })
+mix
+  .blocks()
+  .js('resources/assets/scripts/blocks.js', 'scripts')
+  .sass('resources/assets/styles/blocks.scss', 'styles')
 ```

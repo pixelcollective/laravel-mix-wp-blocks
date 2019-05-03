@@ -1,11 +1,11 @@
 {
   "name": "laravel-mix-wp-blocks",
-  "version": "0.1.0",
-  "description": "Laravel Mix plugin for blocks with HMR and @wordpress externals",
+  "version": "0.1.1",
+  "description": "Laravel Mix extension for the WordPress block editor",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pixelcollective/laravel-mix-wp-block-hmr"
+    "url": "https://github.com/pixelcollective/laravel-mix-wp-blocks"
   },
   "keywords": [
     "laravel",
@@ -17,7 +17,7 @@
   "author": "Kelly Mears",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pixelcollective/laravel-mix-wp-block-hmr/issues"
+    "url": "https://github.com/pixelcollective/laravel-mix-wp-blocks/issues"
   },
-  "homepage": "https://github.com/pixelcollective/laravel-mix-wp-block-hmr#readme"
+  "homepage": "https://github.com/pixelcollective/laravel-mix-wp-blocks#readme"
 }

@@ -1,65 +1,28 @@
 const mix = require('laravel-mix')
-const mkdirp = require('mkdirp')
-const fs = require('fs')
-const getDirName = require('path').dirname
-
 class Blocks {
   /**
-   * The optional name to be used when called by Mix.
-   * Defaults to the class name, lowercased.
-   *
-   * Ex: mix.example();
-   *
-   * @return {String|Array}
-   */
-  name() {
-    return 'blocks'
-  }
-
-  /**
-   * All dependencies that should be installed by Mix.
-   *
-   * @return {Array}
+   * Dependencies management
    */
   dependencies() {
     this.requiresReload = `
       Dependencies have been installed. Please run again.
     `
 
-    return ['@babel/preset-env', 'block-editor-hmr', 'classnames', 'prop-types', 'lodash', 'react']
+    return [
+      '@wordpress/babel-preset-default',
+      'babel-plugin-inline-json-import',
+      'block-editor-hmr',
+      'classnames',
+      'prop-types',
+      'lodash',
+    ]
   }
 
   /**
-   * Register the component.
-   *
-   * When your component is called, all user parameters
-   * will be passed to this method.
-   *
-   * Ex: register(src, output) {}
-   * Ex: mix.yourPlugin('src/path', 'output/path');
-   *
-   * @param  {*} ...params
-   * @return {void}
-   *
-   */
-  register(src, output) {
-    this.config = {
-      src: src ? src : './wp-blocks',
-      output: output ? output : './wp-blocks-dist',
-      entry: src ? `${src}/blocks.js` : './wp-blocks/blocks.js',
-    }
-  }
-
-  /**
-   * Override the generated webpack configuration.
-   *
-   * @param  {Object} webpackConfig
-   * @return {void}
+   * Webpack config
    */
   webpackConfig(webpackConfig) {
     webpackConfig.externals = {
-      lodash: 'lodash',
-      react: 'React',
       'react-dom': 'ReactDOM',
       '@wordpress/blocks': 'wp.blocks',
       '@wordpress/components': 'wp.components',
@@ -80,12 +43,13 @@ class Blocks {
     }
   }
 
+  /**
+   * Bagel config
+   */
   babelConfig() {
     return {
-      presets: [['@babel/preset-env', {
-        corejs: '2.6.5',
-        useBuiltIns: 'entry',
-      }]],
+      presets: ['@wordpress/babel-preset-default'],
+      plugins: ['babel-plugin-inline-json-import'],
     }
   }
 }

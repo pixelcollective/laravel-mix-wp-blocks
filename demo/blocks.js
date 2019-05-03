@@ -8,7 +8,8 @@ import {
 
 autoload(
   {
-    getContext: () => require.context('./blocks', true, /index\.js$/),
+    getContext: () =>
+      require.context(__dirname + '/blocks', true, /index\.js$/),
     register: registerBlock,
     unregister: unregisterBlock,
     before: beforeUpdateBlocks,
@@ -20,13 +21,3 @@ autoload(
     }
   }
 )
-
-/**
- * In ./blocks/block-a.js:
- * export const name = 'myplugin/block-a'
- * export const options = {
- *   title: 'Block A',
- *   description: 'An excellent example block',
- *   // icon, category, attributes, edit, save, etcetera
- * }
- */
