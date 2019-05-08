@@ -1,30 +1,55 @@
-const mix = require('laravel-mix')
-class Blocks {
-  /**
-   * Dependencies management
-   */
+const mix        = require('laravel-mix')
+let   JavaScript = require('laravel-mix/src/components/JavaScript')
+
+class Block extends JavaScript {
+  name() {
+    return 'blocks'
+  }
+
   dependencies() {
     this.requiresReload = `
       Dependencies have been installed. Please run again.
     `
 
     return [
-      '@wordpress/babel-preset-default',
-      'babel-plugin-inline-json-import',
-      'block-editor-hmr',
+      'lodash',
       'classnames',
       'prop-types',
-      'lodash',
+      '@wordpress/babel-preset-default',
+      '@wordpress/wordcount',
+      'block-editor-hmr',
     ]
   }
 
-  /**
-   * Webpack config
-   */
   webpackConfig(webpackConfig) {
-    webpackConfig.externals = {
+    webpackConfig.externals = this.externals()
+  }
+
+  webpackPlugins() {
+    /**
+     * Unreleased to-date
+     * #todo add support once released
+     */
+    // const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+    // return new DependencyExtractionWebpackPlugin()
+  }
+
+  babelConfig() {
+    return {
+      presets: ['@wordpress/babel-preset-default'],
+    }
+  }
+
+  externals() {
+    return {
+      'lodash': 'lodash',
+      'react': 'React',
       'react-dom': 'ReactDOM',
+      '@wordpress/a11y': 'wp.a11y',
+      '@wordpress/api-fetch': 'wp.apiFetch',
+      '@wordpress/blob': 'wp.blob',
       '@wordpress/blocks': 'wp.blocks',
+      '@wordpress/block-editor': 'wp.block-editor',
       '@wordpress/components': 'wp.components',
       '@wordpress/compose': 'wp.compose',
       '@wordpress/data': 'wp.data',
@@ -32,26 +57,14 @@ class Blocks {
       '@wordpress/editor': 'wp.editor',
       '@wordpress/element': 'wp.element',
       '@wordpress/hooks': 'wp.hooks',
-      '@wordpress/i18n': 'wp.i18n',
-      '@wordpress/plugins': 'wp.plugins',
-      '@wordpress/blob': 'wp.blob',
-      '@wordpress/api-fetch': 'wp.apiFetch',
-      '@wordpress/url': 'wp.url',
-      '@wordpress/block-editor': 'wp.block-editor',
-      '@wordpress/keycodes': 'wp.keycodes',
       '@wordpress/html-entities': 'wp.htmlEntities',
-    }
-  }
-
-  /**
-   * Bagel config
-   */
-  babelConfig() {
-    return {
-      presets: ['@wordpress/babel-preset-default'],
-      plugins: ['babel-plugin-inline-json-import'],
+      '@wordpress/i18n': 'wp.i18n',
+      '@wordpress/keycodes': 'wp.keycodes',
+      '@wordpress/plugins': 'wp.plugins',
+      '@wordpress/url': 'wp.url',
+      '@wordpress/utils': 'wp.utils',
     }
   }
 }
 
-mix.extend('blocks', new Blocks())
+mix.extend('block', new Block())
