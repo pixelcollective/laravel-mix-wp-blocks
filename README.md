@@ -13,5 +13,5 @@ Laravel mix extension to transpile WordPress blocks.
 ```js
 require("laravel-mix-wp-blocks")
 
-mix.blocks('resources/assets/scripts/blocks.js', 'scripts')
+mix.block('resources/assets/scripts/blocks.js', 'scripts')
 ```
