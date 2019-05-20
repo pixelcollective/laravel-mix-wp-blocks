@@ -16,8 +16,6 @@ class Block extends JavaScript {
       'classnames',
       'prop-types',
       '@wordpress/babel-preset-default',
-      '@wordpress/wordcount',
-      'block-editor-hmr',
     ]
   }
 
@@ -54,6 +52,7 @@ class Block extends JavaScript {
       '@wordpress/compose': 'wp.compose',
       '@wordpress/data': 'wp.data',
       '@wordpress/date': 'wp.date',
+      '@wordpress/dom-ready': 'wp.domReady',
       '@wordpress/editor': 'wp.editor',
       '@wordpress/element': 'wp.element',
       '@wordpress/hooks': 'wp.hooks',
@@ -63,6 +62,7 @@ class Block extends JavaScript {
       '@wordpress/plugins': 'wp.plugins',
       '@wordpress/url': 'wp.url',
       '@wordpress/utils': 'wp.utils',
+      '@wordpress/wordcount': 'wp.wordcount',
     }
   }
 }
