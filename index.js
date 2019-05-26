@@ -60,6 +60,7 @@ class Block extends JavaScript {
       '@wordpress/i18n': 'wp.i18n',
       '@wordpress/keycodes': 'wp.keycodes',
       '@wordpress/plugins': 'wp.plugins',
+      '@wordpress/rich-text': 'wp.richText',
       '@wordpress/url': 'wp.url',
       '@wordpress/utils': 'wp.utils',
       '@wordpress/wordcount': 'wp.wordcount',
