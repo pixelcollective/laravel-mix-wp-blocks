@@ -1,23 +1,22 @@
 {
   "name": "laravel-mix-wp-blocks",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Laravel mix extension to transpile WordPress blocks.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/roots/sage-scripts"
+    "url": "https://github.com/kellymears/laravel-mix-wp-blocks"
   },
   "keywords": [
     "laravel",
     "laravel mix",
     "mix",
-    "roots",
     "wordpress"
   ],
-  "author": "Roots",
+  "author": "Kelly Mears",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "https://github.com/kellymears/laravel-mix-wp-blocks/issues"
   },
-  "homepage": "https://github.com/roots/sage#readme"
+  "homepage": "https://github.com/kellymears/laravel-mix-wp-blocks#readme"
 }
