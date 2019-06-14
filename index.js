@@ -47,7 +47,7 @@ class Block extends JavaScript {
       '@wordpress/api-fetch': 'wp.apiFetch',
       '@wordpress/blob': 'wp.blob',
       '@wordpress/blocks': 'wp.blocks',
-      '@wordpress/block-editor': 'wp.block-editor',
+      '@wordpress/block-editor': 'wp.blockEditor',
       '@wordpress/components': 'wp.components',
       '@wordpress/compose': 'wp.compose',
       '@wordpress/data': 'wp.data',
