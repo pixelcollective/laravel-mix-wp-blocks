@@ -1,6 +1,6 @@
 {
   "name": "laravel-mix-wp-blocks",
-  "version": "0.1.5",
+  "version": "0.2",
   "description": "Laravel mix extension to transpile WordPress blocks.",
   "main": "index.js",
   "repository": {
