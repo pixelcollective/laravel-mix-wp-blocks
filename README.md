@@ -1,26 +1,37 @@
 # Laravel Mix WP Blocks
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/4445cb074eab29b4ba42/maintainability)](https://codeclimate.com/github/pixelcollective/laravel-mix-wp-blocks/maintainability) [![npm version](https://badge.fury.io/js/%40tinypixelco%2Flaravel-mix-wp-blocks.svg)](https://badge.fury.io/js/%40tinypixelco%2Flaravel-mix-wp-blocks)
+
 ## About
 
-Laravel mix extension to transpile WordPress blocks.
+Laravel mix extension to transpile WordPress block scripts.
 
-`npm install laravel-mix-wp-blocks --save-dev`
-`yarn add -D laravel-mix-wp-blocks`
+## Installation
+
+```sh
+npm install @tinypixelco/laravel-mix-wp-blocks --save-dev
+```
+
+```sh
+yarn add -D @tinypixelco/laravel-mix-wp-blocks
+```
 
 ## Usage
 
+In webpack.config.js:
+
 ```js
-require("laravel-mix-wp-blocks")
+require("@tinypixelco/laravel-mix-wp-blocks")
 
 mix.block('resources/assets/scripts/blocks.js', 'scripts')
 ```
 
-Now you have access to all dependencies using `@wordpress` package import syntax. Example:
+By doing so you'll find that you can now utilize all `@wordpress` scoped dependencies using ECMAScript 6 import syntax. Example:
 
-```
+```js
 import { RichText } from '@wordpress/block-editor'
 ```
 
-You will also find a json file accompanying each script (in your `dist` dir) containing all the `@wordpress` dependencies utilized by that script.
+These packages are included as [webpack externals](https://webpack.js.org/configuration/externals/), so there is no reason to add them to your package file.
 
-You can use that JSON file when enqueing your block in PHP to make sure your declared dependencies always match up with your actual usage.
+You will also find a php manifest file accompanying each script in your distribution directory. This file declares an array of dependencies based on what you've used in your scripts. Require it and you're set.
