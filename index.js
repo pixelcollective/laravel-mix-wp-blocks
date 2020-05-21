@@ -30,7 +30,13 @@ class Block extends JavaScript {
 
   pluginOptions() {
     return Object.assign(
-      {},
+      this.userOptions.wpPolyfill === false ? {
+        requestToExternal(request) {
+          if (request === '@babel/runtime/regenerator') {
+            return null;
+          }
+        },
+      } : {},
       this.userOptions,
     );
   }

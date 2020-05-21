@@ -43,3 +43,11 @@ mix.block('resources/assets/scripts/blocks.js', 'scripts', {
   outputFormat: 'json',
 })
 ```
+
+Besides the plugin options there is a special flag for the common use case of turning off `@babel/runtime/regenerator` handling by `wp-polyfill`.
+
+```js
+mix.block('resources/assets/scripts/blocks.js', 'scripts', {
+  wpPolyfill: false,
+})
+```
