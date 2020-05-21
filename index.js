@@ -17,10 +17,22 @@ class Block extends JavaScript {
     ]
   }
 
+  register(entry, output, options = {}) {
+    this.userOptions = options;
+    super.register(entry, output);
+  }
+
   webpackPlugins() {
     const WordPressDependencyExtraction = require('@wordpress/dependency-extraction-webpack-plugin')
 
-    return new WordPressDependencyExtraction()
+    return new WordPressDependencyExtraction(this.pluginOptions())
+  }
+
+  pluginOptions() {
+    return Object.assign(
+      {},
+      this.userOptions,
+    );
   }
 
   babelConfig() {

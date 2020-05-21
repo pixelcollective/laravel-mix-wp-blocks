@@ -35,3 +35,11 @@ import { RichText } from '@wordpress/block-editor'
 These packages are included as [webpack externals](https://webpack.js.org/configuration/externals/), so there is no reason to add them to your package file.
 
 You will also find a php manifest file accompanying each script in your distribution directory. This file declares an array of dependencies based on what you've used in your scripts. Require it and you're set.
+
+Additional [Dependency Extraction Webpack Plugin options](https://www.npmjs.com/package/@wordpress/dependency-extraction-webpack-plugin#options) maybe be provided as a third argument to `mix.block()`:
+
+```js
+mix.block('resources/assets/scripts/blocks.js', 'scripts', {
+  outputFormat: 'json',
+})
+```
