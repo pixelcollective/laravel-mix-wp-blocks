@@ -5,7 +5,7 @@
 ### Added
 
 - Exposes the underlying `@wordpress/dependency-extraction-webpack-plugin` options.
-- Provides an additional option: `disableRegenerator` to WP polyfilling `babel/runtime/regenerator`.
+- Provides an additional option: `disableRegenerator` to stop WP from polyfilling `babel/runtime/regenerator`.
 
 ## 1.0.0 January 8th, 2020
 
