@@ -57,9 +57,7 @@ class Block extends JavaScript {
    * @return {array|object}
    */
   webpackPlugins() {
-    const WordPressDependencyExtraction = require('@wordpress/dependency-extraction-webpack-plugin')
-
-    return new WordPressDependencyExtraction({
+    return new DependencyExtractionPlugin({
       ...this.pluginOptions,
     })
   }
