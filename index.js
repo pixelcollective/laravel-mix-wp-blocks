@@ -1,11 +1,22 @@
 const mix = require('laravel-mix')
-let JavaScript = require('laravel-mix/src/components/JavaScript')
+const JavaScript = require('laravel-mix/src/components/JavaScript')
+const DependencyExtractionPlugin = require('@wordpress/dependency-extraction-webpack-plugin')
 
+/**
+ * Laravel Mix WP Block
+ *
+ * @see https://laravel-mix.com/docs/5.0/extending-mix
+ * @see https://www.npmjs.com/package/@wordpress/dependency-extraction-webpack-plugin
+ */
 class Block extends JavaScript {
   name() {
-    return 'blocks'
+    return ['blocks', 'block']
   }
-
+  /**
+   * All dependencies that should be installed by Mix.
+   *
+   * @return {array}
+   */
   dependencies() {
     this.requiresReload = `
       Dependencies have been installed. Please run again.
@@ -17,30 +28,47 @@ class Block extends JavaScript {
     ]
   }
 
+  /**
+   * Register the plugin component.
+   *
+   * @param  {string} entry
+   * @param  {string} output
+   * @param  {object} options
+   * @return {void}
+   */
   register(entry, output, options = {}) {
-    this.userOptions = options;
-    super.register(entry, output);
+    this.pluginOptions = (
+      options.disableRegenerator === true ? {
+        ...options,
+        requestToExternal: function(request) {
+          if (request === '@babel/runtime/regenerator') {
+            return null
+          }
+        },
+      } : options
+    )
+
+    super.register(entry, output)
   }
 
+  /**
+   * Plugins to be merged with the master webpack config.
+   *
+   * @return {array|object}
+   */
   webpackPlugins() {
     const WordPressDependencyExtraction = require('@wordpress/dependency-extraction-webpack-plugin')
 
-    return new WordPressDependencyExtraction(this.pluginOptions())
+    return new WordPressDependencyExtraction({
+      ...this.pluginOptions,
+    })
   }
 
-  pluginOptions() {
-    return Object.assign(
-      this.userOptions.wpPolyfill === false ? {
-        requestToExternal(request) {
-          if (request === '@babel/runtime/regenerator') {
-            return null;
-          }
-        },
-      } : {},
-      this.userOptions,
-    );
-  }
-
+  /**
+   * Babel config to be merged with the master Babel config.
+   *
+   * @return {object}
+   */
   babelConfig() {
     return {
       presets: ['@wordpress/babel-preset-default'],
