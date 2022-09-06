@@ -1,6 +1,6 @@
-const mix = require('laravel-mix')
-const JavaScript = require('laravel-mix/src/components/JavaScript')
-const DependencyExtractionPlugin = require('@wordpress/dependency-extraction-webpack-plugin')
+const mix = require("laravel-mix");
+const JavaScript = require("laravel-mix/src/components/JavaScript");
+const DependencyExtractionPlugin = require("@wordpress/dependency-extraction-webpack-plugin");
 
 /**
  * Laravel Mix WP Block
@@ -11,12 +11,13 @@ const DependencyExtractionPlugin = require('@wordpress/dependency-extraction-web
 class Block extends JavaScript {
   constructor() {
     super();
-    this.context = Mix
+    this.context = Mix;
   }
-  
+
   name() {
-    return ['blocks', 'block']
+    return ["blocks", "block"];
   }
+
   /**
    * All dependencies that should be installed by Mix.
    *
@@ -25,12 +26,12 @@ class Block extends JavaScript {
   dependencies() {
     this.requiresReload = `
       Dependencies have been installed. Please run again.
-    `
+    `;
 
     return [
-      '@wordpress/babel-preset-default',
-      '@wordpress/dependency-extraction-webpack-plugin',
-    ]
+      "@wordpress/babel-preset-default",
+      "@wordpress/dependency-extraction-webpack-plugin",
+    ];
   }
 
   /**
@@ -42,18 +43,19 @@ class Block extends JavaScript {
    * @return {void}
    */
   register(entry, output, options = {}) {
-    this.pluginOptions = (
-      options.disableRegenerator === true ? {
-        ...options,
-        requestToExternal: function(request) {
-          if (request === '@babel/runtime/regenerator') {
-            return null
+    this.pluginOptions =
+      options.disableRegenerator === true
+        ? {
+            ...options,
+            requestToExternal: function (request) {
+              if (request === "@babel/runtime/regenerator") {
+                return null;
+              }
+            },
           }
-        },
-      } : options
-    )
+        : options;
 
-    super.register(entry, output)
+    super.register(entry, output);
   }
 
   /**
@@ -64,7 +66,7 @@ class Block extends JavaScript {
   webpackPlugins() {
     return new DependencyExtractionPlugin({
       ...this.pluginOptions,
-    })
+    });
   }
 
   /**
@@ -74,10 +76,10 @@ class Block extends JavaScript {
    */
   babelConfig() {
     return {
-      presets: ['@wordpress/babel-preset-default'],
-    }
+      presets: ["@wordpress/babel-preset-default"],
+    };
   }
 }
 
-mix.extend('block', new Block())
-mix.extend('blocks', new Block())
+mix.extend("block", new Block());
+mix.extend("blocks", new Block());

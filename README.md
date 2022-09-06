@@ -21,15 +21,15 @@ yarn add -D @tinypixelco/laravel-mix-wp-blocks
 In webpack.config.js:
 
 ```js
-require("@tinypixelco/laravel-mix-wp-blocks")
+require("@tinypixelco/laravel-mix-wp-blocks");
 
-mix.block('resources/assets/scripts/blocks.js', 'scripts')
+mix.block("resources/assets/scripts/blocks.js", "scripts");
 ```
 
 By doing so you'll find that you can now utilize all `@wordpress` scoped dependencies using ECMAScript 6 import syntax. Example:
 
 ```js
-import { RichText } from '@wordpress/block-editor'
+import { RichText } from "@wordpress/block-editor";
 ```
 
 These packages are included as [webpack externals](https://webpack.js.org/configuration/externals/), so there is no reason to add them to your package file.
@@ -39,15 +39,15 @@ You will also find a php manifest file accompanying each script in your distribu
 Additional [Dependency Extraction Webpack Plugin options](https://www.npmjs.com/package/@wordpress/dependency-extraction-webpack-plugin#options) maybe be provided as a third argument to `mix.block()`:
 
 ```js
-mix.block('resources/assets/scripts/blocks.js', 'scripts', {
-  outputFormat: 'json',
-})
+mix.block("resources/assets/scripts/blocks.js", "scripts", {
+  outputFormat: "json",
+});
 ```
 
 Besides the plugin options there is a special flag for the common use case of turning off `@babel/runtime/regenerator` handling by `wp-polyfill`.
 
 ```js
-mix.block('resources/assets/scripts/blocks.js', 'scripts', {
+mix.block("resources/assets/scripts/blocks.js", "scripts", {
   disableRegenerator: true,
-})
+});
 ```
