@@ -9,6 +9,11 @@ const DependencyExtractionPlugin = require('@wordpress/dependency-extraction-web
  * @see https://www.npmjs.com/package/@wordpress/dependency-extraction-webpack-plugin
  */
 class Block extends JavaScript {
+  constructor() {
+    super();
+    this.context = Mix
+  }
+  
   name() {
     return ['blocks', 'block']
   }
