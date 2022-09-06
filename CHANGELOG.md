@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 Sept 5, 2022
+
+- [fix: update for >=6.0.43](https://github.com/pixelcollective/laravel-mix-wp-blocks/pull/7) by [@joshuafredrickson](https://github.com/joshuafredrickson)
+
 ## 1.1.0 May 24th, 2020
 
 ### Added

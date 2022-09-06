@@ -1,24 +1,20 @@
 {
   "name": "@tinypixelco/laravel-mix-wp-blocks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Laravel mix extension to transpile WordPress blocks.",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pixelcollective/laravel-mix-wp-blocks"
   },
   "keywords": [
-    "laravel",
-    "mix",
     "laravel mix",
-    "wordpress",
-    "gutenberg",
-    "react"
+    "wordpress"
   ],
   "author": "Kelly Mears <developers@tinypixel.dev> (https://kellymears.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pixelcollective/laravel-mix-wp-blocks/issues"
   },
-  "homepage": "https://github.com/pixelcollective/laravel-mix-wp-blocks#readme"
+  "homepage": "https://github.com/pixelcollective/laravel-mix-wp-blocks#readme",
+  "main": "index.js"
 }
